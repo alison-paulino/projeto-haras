@@ -16,12 +16,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Rotas
+const routerAdm = require('./routes/auth.routes')
 
-//const projectRoutes = require('./routes/project.routes');
-//const authRoutes = require('./routes/auth.routes');
+
 
 // Rotas Publicas
-//app.use('/auth', authRoutes);
+app.use('/auth', routerAdm);
 
 // Middleware de autenticação
 

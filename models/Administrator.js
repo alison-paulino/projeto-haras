@@ -14,9 +14,9 @@ const administratorSchema = new Schema(
             type: String,
             required: [true, 'Telefone é obrigatório'],
         },
-        wage: {
+        age: {
             type: Number,
-            required: [true, 'Salario é obrigatório']
+            required: [true, 'Idade é obrigatório']
         },
         email: {
             type: String,
