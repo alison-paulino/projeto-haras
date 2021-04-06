@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 // Connect DB
-
 require('./config/db.config');
 
 const app = express();
@@ -16,12 +15,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Rotas
+const routerAuth = require('./routes/auth.routes')
 
-//const projectRoutes = require('./routes/project.routes');
-//const authRoutes = require('./routes/auth.routes');
-
-// Rotas Publicas
-//app.use('/auth', authRoutes);
+app.use('/auth', routerAuth);
 
 // Middleware de autenticação
 
@@ -29,11 +25,6 @@ const authMiddleware = require('./middlewares/auth.middleware');
 
 app.use(authMiddleware);
 
-
-// Rotas Privadas que precisam de jwt
-
-
-
-// exportar o meu app
+// exportar app
 
 module.exports = app;
