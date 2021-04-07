@@ -48,7 +48,30 @@ routerAuth.post('/loginAdm', async(req, res) =>{
         
         res.status(500).json();
     }
-})    
+})  
+
+routerAuth.get('/adm/:id', async (req, res) =>{
+    try {
+        const {id} = req.params
+        const administrator = await administratorDao.findAdministratorById(id);
+        res.status(200).json(administrator)
+    } catch (error) {
+        throw new Error();
+    }
+})
+routerAuth.put('/updateAdm/:id',async (req, res) =>{
+    try {
+        const {id} = req.params
+        const { name, phone, email, age, imageUrl, password } = req.body
+        if(!name && !phone && !email && !age && !imageUrl && !password){
+            return res.status(400).json({message: 'Todos os campos são obrigatórios'})
+        }
+        const administrator = await administratorDao.updateAdministrator(req.body,id)
+        return res.status(201).json({administrator})
+    } catch (error) {
+        throw new Error();
+    }
+} )
 routerAuth.post('/signup', async(req, res) =>{
     try {
         const { name, phone, email, age, imageUrl, password } = req.body
