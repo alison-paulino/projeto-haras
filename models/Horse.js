@@ -35,7 +35,12 @@ const HorseSchema = new Schema(
         },
         midias: {
             type : [String]
-        }        
+        },
+        register: {
+            type: String,
+            required: [true, 'Registro é obrigatório.'],
+            unique: true,
+        },        
         
     },
     {
