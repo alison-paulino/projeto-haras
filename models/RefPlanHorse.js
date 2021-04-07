@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 const Horse = require('../models/Horse');
 const Plans = require('../models/Plans');
-const Padrinho = require('../models/Padrinho');
+const Padrinho = require('../models/Sponsor');
 
 
 const refPlanHorseSchema = new Schema(
@@ -13,8 +13,8 @@ const refPlanHorseSchema = new Schema(
           plans_id: {
             type: Schema.Types.ObjectId, ref: 'Plans'
           },
-          padrinho_id: {
-            type: Schema.Types.ObjectId, ref: 'Padrinho'
+          sponsor_id: {
+            type: Schema.Types.ObjectId, ref: 'Sponsor'
           }
         
     },

@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const padrinhoSchema = new Schema(
+const sponsorSchema = new Schema(
     {
         name: {
             type: String,
@@ -11,7 +11,7 @@ const padrinhoSchema = new Schema(
             type: String,
             required: [true, 'Telefone é obrigatório'],
         },
-        wage: {
+        age: {
             type: Number,
             required: [true, 'Idade é obrigatório']
         },
@@ -42,4 +42,4 @@ const padrinhoSchema = new Schema(
         timestamps: true
     }
 );
-module.exports = model('Padrinho', padrinhoSchema);
+module.exports = model('Sponsor', sponsorSchema);

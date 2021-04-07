@@ -15,7 +15,7 @@ const HorseSchema = new Schema(
             type: String,
             required: [ true, 'Cor é obrigatório.']
         },
-        wage: {
+        age: {
             type: Number,
             required: [ true, 'Idade é obrigatório.']
         },
