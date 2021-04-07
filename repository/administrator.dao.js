@@ -67,11 +67,10 @@ class AdminitratorRepository{
 
     findAdministratorById = async (id)=>{
         try {
-            console.log("entrei no findAdministratorById")
-            const administratorBD = await this.administrator.findById(id)
+           const administratorBD = await this.administrator.findById(id)
         return administratorBD;
         } catch (error) {
-            console.log(error)
+            
             throw new Error();
         }
         

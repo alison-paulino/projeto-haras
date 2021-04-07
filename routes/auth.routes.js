@@ -69,7 +69,7 @@ routerAuth.put('/updateAdm/:id',async (req, res) =>{
         const administrator = await administratorDao.updateAdministrator(req.body,id)
         return res.status(201).json({administrator})
     } catch (error) {
-        throw new Error();
+        res.status(500).json({message:'Administrador não encontrado'})
     }
 } )
 routerAuth.post('/signup', async(req, res) =>{
@@ -114,5 +114,27 @@ routerAuth.post('/login', async(req, res) =>{
         
         res.status(500).json();
     }
+    routerAuth.get('/sponsor/:id', async(req, res)=>{
+        try {
+            const {id} = req.params
+            const sponsorDB = await sponsorDao.findSponsorById(id)
+            return res.status(200).json(sponsorDB)
+        } catch (error) {
+            res.status(401).json({message:'Usuário não encontrado'})
+        }
+    })
+    routerAuth.put('/updateSponsor/:id',async (req, res) =>{
+    try {
+        const {id} = req.params
+        const { name, phone, email, age, imageUrl, password, message } = req.body
+        if(!name && !phone && !email && !age && !imageUrl && !password){
+            return res.status(400).json({message: 'Todos os campos são obrigatórios'})
+        }
+        const sponsor = await sponsorDao.updateSponsor(req.body,id)
+        return res.status(201).json({sponsor})
+    } catch (error) {
+        res.status(500).json({message:'Patrocinador não encontrado'})
+    }
+})
 })
 module.exports = routerAuth;
