@@ -40,5 +40,37 @@ class SponsorRepository{
              throw new Error();
         }
     }
+    findSponsorById = async (id)=>{
+        try {
+            const sponsor = await this.sponsor.findById(id)
+            return sponsor
+        } catch (error) {
+            throw new Error();
+        }
+    }
+    updateSponsor = async (sponsor, id)=>{
+        try {
+            const { name, phone, age, email, password, imageUrl, message } = sponsor;
+            const sponsorDB = await this.sponsor.findById(id) 
+            if(!sponsorDB){
+                throw new Error();
+            }else{
+                const salt = bcrypt.genSaltSync(10);
+                const passwordHash = bcrypt.hashSync(password, salt);
+                const updatedSponsor = await this.sponsor.findByIdAndUpdate(
+                    id,{name, phone, age, email, imageUrl, passwordHash, message},{new : true})
+                return ({
+                    name: updatedSponsor.name,
+                    phone : updatedSponsor.phone,
+                    age: updatedSponsor.age,
+                    email: updatedSponsor.email,
+                    imageUrl: updatedSponsor.imageUrl,
+                })
+            }
+        } catch (error) {
+            throw new Error();
+        }
+    }
+
 } 
 module.exports = new SponsorRepository(Sponsor);
