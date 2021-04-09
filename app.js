@@ -24,7 +24,7 @@ const routerPlan = require('./routes/plans.routes')
 app.use('/plans', routerPlan);
 app.use('/auth', routerAuth);
 app.use('/sponsor', routerSponsor);
-app.use('/apadrinhar', routerRefPlanHorse);
+app.use('/support', routerRefPlanHorse);
 
 
 // Middleware de autenticação

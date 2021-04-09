@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const RefPlanHorse = require('../models/RefPlanHorse');
 
 const sponsorSchema = new Schema(
     {
@@ -35,7 +36,10 @@ const sponsorSchema = new Schema(
         },
         dayUseMonth: {
             type: Number,
-        }
+        },
+        refPlanHorse_id: {
+            type: Schema.Types.ObjectId, ref: 'RefPlanHorse'
+          }  
         
     },
     {
