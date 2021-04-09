@@ -15,15 +15,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Rotas
-const routerAuth = require('./routes/auth.routes')
+const routerAuth = require('./routes/auth.routes');
+const routerHorse = require('./routes/horse.routes');
 
 app.use('/auth', routerAuth);
-
 // Middleware de autenticação
-
 const authMiddleware = require('./middlewares/auth.middleware');
-
 app.use(authMiddleware);
+app.use('/horse', routerHorse);
 
 // exportar app
 
