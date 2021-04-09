@@ -22,7 +22,7 @@ routerAuth.post('/signupAdm', async(req, res) =>{
 
 routerAuth.post('/loginAdm', async(req, res) =>{
     try {
-        const { name, phone, email, age, imageUrl, password } = req.body
+        const {  email, password } = req.body
         const administrador = await administratorDao.findAdministrator(email)
         
         if(!administrador){
@@ -88,7 +88,7 @@ routerAuth.post('/signup', async(req, res) =>{
 })
 routerAuth.post('/login', async(req, res) =>{
     try {
-        const { name, phone, email, age, imageUrl, password} = req.body
+        const { email, password} = req.body
         const sponsor = await sponsorDao.findSponsor(email)
         
         if(!sponsor){

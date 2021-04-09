@@ -21,7 +21,7 @@ const plansSchema = new Schema(
         },
         dayUseMonth: {
             type: Number,
-            required: [ true, 'quantidade de dias é obrigatório.']
+            
         },
     },
     {

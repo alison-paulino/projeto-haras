@@ -1,5 +1,4 @@
 const Horse = require('../models/Horse');
-const bcrypt = require('bcryptjs');
 
 class HorseRepository{
 

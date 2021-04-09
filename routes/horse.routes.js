@@ -1,4 +1,3 @@
-const bcrypt = require('bcryptjs');
 const horseDao = require('../repository/horse.dao')
 const { Router } = require('express');
 
@@ -20,7 +19,6 @@ routerHorse.post('/create', async (req, res)=>{
 routerHorse.get('/update/:id', async (req, res)=>{
     try {
         const { id } = req.params;
-        console.log(id);
         const horse = await horseDao.findHorseById(id)
         res.status(200).json({
             name: horse.name,
