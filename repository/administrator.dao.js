@@ -36,7 +36,7 @@ class AdminitratorRepository{
             const administrator = await this.administrator.findOne({email})
             return administrator
         } catch (error) {
-             throw new Error();
+             throw new Error(error);
         }
     }
     
@@ -61,7 +61,7 @@ class AdminitratorRepository{
                 })
             }
         } catch (error) {
-            throw new Error();
+            throw new Error(error);
         }
     }
 

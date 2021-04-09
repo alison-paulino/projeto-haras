@@ -16,12 +16,12 @@ const plansSchema = new Schema(
             type: [String]
         },
         duration: {
-            type: Date,
+            type: String,
             required: [ true, 'Duração do plano é obrigatório.']
         },
         dayUseMonth: {
             type: Number,
-            
+
         },
     },
     {

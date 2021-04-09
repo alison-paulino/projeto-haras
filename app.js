@@ -14,6 +14,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+
 // Rotas
 const routerAuth = require('./routes/auth.routes');
 const routerHorse = require('./routes/horse.routes');
@@ -30,6 +31,14 @@ app.use('/apadrinhar', routerRefPlanHorse);
 const authMiddleware = require('./middlewares/auth.middleware');
 app.use(authMiddleware);
 app.use('/horse', routerHorse);
+
+
+// Rotas Privadas (Precisam de jwt)
+const harasRouter = require('./routes/haras.routes')
+const plansRouter = require('./routes/plans.routes')
+app.use( '/haras', harasRouter )
+app.use( '/plans', plansRouter )
+
 
 // exportar app
 
