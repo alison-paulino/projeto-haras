@@ -14,16 +14,22 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// Rotas
+// Rotas Públicas
 const routerAuth = require('./routes/auth.routes')
-
 app.use('/auth', routerAuth);
 
 // Middleware de autenticação
 
 const authMiddleware = require('./middlewares/auth.middleware');
-
 app.use(authMiddleware);
+
+
+// Rotas Privadas (Precisam de jwt)
+const harasRouter = require('./routes/haras.routes')
+const plansRouter = require('./routes/plans.routes')
+app.use( '/haras', harasRouter )
+app.use( '/plans', plansRouter )
+
 
 // exportar app
 

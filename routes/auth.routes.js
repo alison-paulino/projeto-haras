@@ -22,16 +22,16 @@ routerAuth.post('/signupAdm', async(req, res) =>{
 
 routerAuth.post('/loginAdm', async(req, res) =>{
     try {
-        const { name, phone, email, age, imageUrl, password } = req.body
+        const { email, password } = req.body
         const administrador = await administratorDao.findAdministrator(email)
         
         if(!administrador){
             return res.status(400).json({message:'Login não autorizado, entre com senha e email novamente'})
         } 
         const compareHash = bcrypt.compareSync(password, administrador.passwordHash)
-      
+        
         if(!compareHash){
-             return res.status(400).json({message:'Login não autorizado, entre com senha e email novamente'})
+            return res.status(400).json({message:'Login não autorizado, entre com senha e email novamente'})
         }
         const payload = {
             email: administrador.email,
@@ -41,12 +41,13 @@ routerAuth.post('/loginAdm', async(req, res) =>{
         const token = jwt.sign(
             payload,
             process.env.SECRET_JWT,
-            {expiresIn: '1day'}
-        )
-         res.status(200).json({ payload,token})
+            {expiresIn: '1 day'}
+            )
+            console.log('fim da rota')
+         res.status(200).json({ payload, token })
     } catch (error) {
         
-        res.status(500).json();
+        res.status(500).json(error);
     }
 })  
 
