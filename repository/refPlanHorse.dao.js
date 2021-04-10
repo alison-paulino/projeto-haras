@@ -1,6 +1,7 @@
 const RefPlanHorse = require('../models/RefPlanHorse');
 const Sponsor = require('../models/Sponsor');
 const Horse = require('../models/Horse');
+const Plans = require('../models/Plans');
 
 class RefPlanHorseRepositoty {
     constructor(refPlanHorseModel){
@@ -32,6 +33,18 @@ class RefPlanHorseRepositoty {
             return(sponsor)
         } catch (error) {
          throw new Error();   
+        }
+    }
+    getProfile = async (id)=>{
+        try {
+            const sponsorProfile = await Sponsor.findById(id).populate({
+                path: "refPlanHorse_id",
+                 populate :[ {path: "horse_id", model : "Horse"}, 
+                 {path: "plans_id", model : "Plans"}],
+                 })
+                 return(sponsorProfile) 
+        } catch (error) {
+           throw new Error() 
         }
     }
 }
