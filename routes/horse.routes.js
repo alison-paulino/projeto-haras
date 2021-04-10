@@ -1,6 +1,8 @@
 const bcrypt = require('bcryptjs');
 const horseDao = require('../repository/horse.dao')
 const { Router } = require('express');
+const fileUploader = require('../config/cloudinary.config');
+
 
 const routerHorse = Router();
 
@@ -53,7 +55,29 @@ routerHorse.put('/update/:id', async (req, res)=>{
                     imageUrl: horse.imageUrl})
     } catch (error) {
         res.status(500).json({message:'Erro ao alterar um cavalo'})
+    }    
+})
+routerHorse.post('/sendImg/:id', fileUploader.single('image'), async (req, res) =>{
+    try {
+        const { id } = req.params;
+        const updatedHorse = await horseDao.insertImg(id, req.file.path)
+        return res.status(201).json(updatedHorse)
+    } catch (error) {
+        res.status(500).json({ message: 'Erro ao carregar foto do cavalo'})
+        
     }
 })
+
+routerHorse.post('/sendVideo/:id', fileUploader.single('video'), async (req, res) =>{
+    try {
+        const { id } = req.params;
+        console.log(req.file)
+        const updatedHorse = await horseDao.insertVideo(id, req.file.path)
+        return res.status(201).json(updatedHorse)
+    } catch (error) {
+        res.status(500).json({ message: 'Erro ao carregar video do cavalo'})    
+    }
+
+}) 
 
 module.exports = routerHorse;

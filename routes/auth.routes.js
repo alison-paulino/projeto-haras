@@ -31,11 +31,7 @@ routerAuth.post('/loginAdm', async(req, res) =>{
         const compareHash = bcrypt.compareSync(password, administrador.passwordHash)
         
         if(!compareHash){
-<<<<<<< HEAD
-            return res.status(400).json({message:'Login não autorizado, entre com senha e email novamente'})
-=======
              return res.status(400).json({message:'Login não autorizado, senha ou email incorreto'})
->>>>>>> 2b321e4b86142db3e00d1e4b252077ae318e0ad5
         }
         const payload = {
             email: administrador.email,

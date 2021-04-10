@@ -52,5 +52,22 @@ class HorseRepository{
             throw new Error();
         } 
     }
+    insertImg = async (id, urlImg) =>{
+        try {
+            const horseWithImg = await this.horse.findByIdAndUpdate(id, {$push: {midiasImg: urlImg }}, {new : true})
+            return (horseWithImg)
+        } catch (error) {
+            throw new Error();
+        }
+    }
+    insertVideo = async (id, urlVideo) =>{
+        try {
+            const horseWithVideo = await this.horse.findByIdAndUpdate(id, {$push: {midiasVideo: urlVideo }}, {new : true})
+            return (horseWithVideo)
+        } catch (error) {
+            throw new Error();
+            
+        }
+    }
 }
 module.exports = new HorseRepository(Horse)
