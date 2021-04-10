@@ -12,9 +12,10 @@ const plansSchema = new Schema(
             type: String,
             required: [true, 'Valor do plano é obrigatório'],
         },
-        message: {
-            type: [String]
-        },
+        message: [{
+            type: String
+        }],
+        
         duration: {
             type: String,
             required: [ true, 'Duração do plano é obrigatório.']

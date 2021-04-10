@@ -43,4 +43,18 @@ plansRouter.put('/update/:id', async (req, res) => {
     }
 })
 
+plansRouter.post('/sendMessage/:id', async (req, res) =>{
+    try {
+        const { id } = req.params;
+          if( !req.body.message ){
+            return res.status(400).json({ message: 'Por favor escreva uma mensagem!'})
+        }
+        const messagesPlan = await plansDao.sendMessage(id, req.body)
+        return res.status(201).json(messagesPlan)
+    } catch (error) {
+        res.status(500).json({ message: 'Erro ao enviar mensagem'})        
+    }
+})
+
+
 module.exports = plansRouter;

@@ -11,11 +11,10 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   
   cloudinary,
+  params:{ 
   folder: 'horses', 
-  allowedFormats: ['jpg', 'png', 'mp4', 'mov'],
-  filename: function (req, file, cb) {
-    cb(null, file.originalname); 
-  }
+  resource_type: 'auto',
+}
 });
                        
 const uploadCloud = multer({ storage });

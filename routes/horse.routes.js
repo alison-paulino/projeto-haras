@@ -71,11 +71,10 @@ routerHorse.post('/sendImg/:id', fileUploader.single('image'), async (req, res) 
 routerHorse.post('/sendVideo/:id', fileUploader.single('video'), async (req, res) =>{
     try {
         const { id } = req.params;
-        console.log(req.file)
         const updatedHorse = await horseDao.insertVideo(id, req.file.path)
         return res.status(201).json(updatedHorse)
     } catch (error) {
-        res.status(500).json({ message: 'Erro ao carregar video do cavalo'})    
+        res.status(500).json({ message: 'Erro ao carregar vídeo do cavalo' })    
     }
 
 }) 
