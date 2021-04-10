@@ -37,10 +37,9 @@ const sponsorSchema = new Schema(
         dayUseMonth: {
             type: Number,
         },
-        refPlanHorse_id: {
-            type: Schema.Types.ObjectId, ref: 'RefPlanHorse'
-          }  
-        
+        refPlanHorse_id: [
+           {type: Schema.Types.ObjectId, ref: 'RefPlanHorse'}
+            ] 
     },
     {
         timestamps: true

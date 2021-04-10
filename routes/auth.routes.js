@@ -86,7 +86,7 @@ routerAuth.post('/signup', async(req, res) =>{
         }
         const sponsor = await sponsorDao.register(req.body)
         res.status(201).json(sponsor)
-        console.log(`console sponsor ${sponsor}`)
+       
     } catch (error) {
         res.status(500).json({message:'Erro ao registrar novo Patrocinador'})
     }

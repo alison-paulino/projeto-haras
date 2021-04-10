@@ -13,5 +13,15 @@ routerRef.post('/tosponsor', async (req, res)=>{
     }
 })
 
+routerRef.get('/listhorsetosponsor/:id', async (req, res)=>{
+    try {
+        const { id } = req.params;
+        const horses = await RefPlanHorseDao.findHorseToSponsor(id)
+        return res.status(200).json(horses)
+    } catch (error) {
+        res.status(500).json({message:'Não há nenhum cavalo apadrinhado'})
+    }
+})
+
 
 module.exports = routerRef;

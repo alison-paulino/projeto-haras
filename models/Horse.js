@@ -34,17 +34,20 @@ const HorseSchema = new Schema(
         dayUse: {
             type : Date
         },
-        midias: {
-            type : [String]
-        },
+        midiasImg: [{
+            type : String
+        }],
+        midiasVideo:[ {
+            type : String
+        }],
         register: {
             type: String,
             required: [true, 'Registro é obrigatório.'],
             unique: true,
         }, 
-        refPlanHorse_id: {
+        refPlanHorse_id: [{
             type: Schema.Types.ObjectId, ref: 'RefPlanHorse'
-          }       
+          }]
         
     },
     {

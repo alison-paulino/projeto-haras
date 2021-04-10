@@ -12,35 +12,27 @@ class RefPlanHorseRepositoty {
             const { horse_id, plans_id, sponsor_id} = ids
             const refPlanHorse = await this.refPlanHorse.create(
                 {horse_id, plans_id, sponsor_id })
-                const refPlanHorse_id = refPlanHorse._id; 
-                try {
-                const SponsorInsertId = await Sponsor.findByIdAndUpdate(sponsor_id,{refPlanHorse_id}, {new : true})
-                } catch (error) {
-                    throw new Error();
-                } 
-                    try {
-                        const HorseInsertId = await Horse.findByIdAndUpdate(horse_id,{refPlanHorse_id}, {new : true})
-                        
-                    } catch (error) {
-                        throw new Error();
-                    }
-                
+            const refPlanHorse_id = refPlanHorse._id; 
+            const SponsorInsertId = await Sponsor.findByIdAndUpdate(
+                sponsor_id,{$push:{refPlanHorse_id}}, { new : true})
+            const HorseInsertId = await Horse.findByIdAndUpdate(
+                horse_id,{$push:{refPlanHorse_id}}, {new : true})
             return (refPlanHorse)
         } catch (error) {
             throw new Error();
         }
-        
     }
-
-    listHorse = async ()=>{
+    findHorseToSponsor = async (id)=>{
         try {
-          const listHorsesDB = await this.refPlanHorse.find({})
-          console.log(listHorsesDB.horse_id);
-          return(listHorsesDB)
+            const sponsor = await Sponsor.findById(id).populate({
+                path: "refPlanHorse_id",
+                populate : {path :"horse_id", model :"Horse" }
+                })
+            
+            return(sponsor)
         } catch (error) {
-            throw new Error();
+         throw new Error();   
         }
     }
-    
 }
 module.exports = new RefPlanHorseRepositoty(RefPlanHorse);

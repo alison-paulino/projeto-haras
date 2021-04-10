@@ -51,5 +51,13 @@ class HorseRepository{
             throw new Error();
         } 
     }
+    findHorse = async ()=>{
+        try {
+            const horseArr = await this.horse.find()
+            return(horseArr) 
+        } catch (error) {
+            throw new Error();
+        }
+    }
 }
 module.exports = new HorseRepository(Horse)
