@@ -8,6 +8,7 @@ const cors = require('cors');
 require('./config/db.config');
 
 const app = express();
+app.use(cors());
 
 // Middlewares
 
@@ -29,6 +30,7 @@ app.use('/auth', routerAuth);
 app.use('/sponsor', routerSponsor);
 app.use('/support', routerRefPlanHorse);
 app.use('/plans', routerPlan);
+
 
 // Middleware de autenticação
 const authMiddleware = require('./middlewares/auth.middleware');
