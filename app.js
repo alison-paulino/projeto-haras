@@ -14,15 +14,10 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-<<<<<<< HEAD
-// Rotas Públicas
-const routerAuth = require('./routes/auth.routes')
-=======
 // Rotas
 const routerAuth = require('./routes/auth.routes');
 const routerHorse = require('./routes/horse.routes');
 
->>>>>>> 2b321e4b86142db3e00d1e4b252077ae318e0ad5
 app.use('/auth', routerAuth);
 // Middleware de autenticação
 const authMiddleware = require('./middlewares/auth.middleware');

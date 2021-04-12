@@ -33,9 +33,12 @@ const HorseSchema = new Schema(
         dayUse: {
             type : Date
         },
-        midias: {
-            type : [String]
-        },
+        midiasImg: [{
+            type : String
+        }],
+        midiasVideo: [{
+            type : String
+        }],
         register: {
             type: String,
             required: [true, 'Registro é obrigatório.'],
