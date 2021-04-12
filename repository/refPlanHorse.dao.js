@@ -35,6 +35,7 @@ class RefPlanHorseRepositoty {
          throw new Error();   
         }
     }
+    //profile
     getProfile = async (id)=>{
         try {
             const sponsorProfile = await Sponsor.findById(id).populate({
