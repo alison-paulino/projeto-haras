@@ -1,4 +1,3 @@
-const bcrypt = require('bcryptjs');
 const horseDao = require('../repository/horse.dao')
 const { Router } = require('express');
 const fileUploader = require('../config/cloudinary.config');
@@ -22,7 +21,6 @@ routerHorse.post('/create', async (req, res)=>{
 routerHorse.get('/update/:id', async (req, res)=>{
     try {
         const { id } = req.params;
-        console.log(id);
         const horse = await horseDao.findHorseById(id)
         res.status(200).json({
             name: horse.name,
@@ -68,6 +66,33 @@ routerHorse.post('/sendImg/:id', fileUploader.single('image'), async (req, res) 
     }
 })
 
+routerHorse.get('/listhorse', async (req, res)=>{
+    try {
+        console.log('rota listHorse')
+        const listedHorse = await horseDao.findHorse()
+        return(res.status(200).json(listedHorse))
+    } catch (error) {
+        res.status(500).json({message:'Erro ao buscar cavalos'})
+    }
+})
+routerHorse.get('/infohorse/:id', async (req, res)=>{
+    try {
+        const { id } = req.params
+        const horseInfo = await horseDao.findHorseById(id)
+        res.status(200).json({
+            name: horseInfo.name,
+            affiliation: horseInfo.affiliation,
+            color: horseInfo.color,
+            age: horseInfo.age,
+            behavior: horseInfo.behavior,
+            breed: horseInfo.breed,
+            imageUrl: horseInfo.imageUrl
+        })
+    } catch (error) {
+        res.status(500).json({message:'Erro no servidor!'})
+    }
+})
+
 routerHorse.post('/sendVideo/:id', fileUploader.single('video'), async (req, res) =>{
     try {
         const { id } = req.params;
@@ -78,5 +103,6 @@ routerHorse.post('/sendVideo/:id', fileUploader.single('video'), async (req, res
     }
 
 }) 
+
 
 module.exports = routerHorse;

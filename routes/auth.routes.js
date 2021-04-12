@@ -22,7 +22,9 @@ routerAuth.post('/signupAdm', async(req, res) =>{
 
 routerAuth.post('/loginAdm', async(req, res) =>{
     try {
-        const { email, password } = req.body
+
+        const {  email, password } = req.body
+
         const administrador = await administratorDao.findAdministrator(email)
         
         if(!administrador){
@@ -31,7 +33,7 @@ routerAuth.post('/loginAdm', async(req, res) =>{
         const compareHash = bcrypt.compareSync(password, administrador.passwordHash)
         
         if(!compareHash){
-             return res.status(400).json({message:'Login não autorizado, senha ou email incorreto'})
+          return res.status(400).json({message:'Login não autorizado, senha ou email incorreto'})
         }
         const payload = {
             email: administrador.email,
@@ -82,14 +84,14 @@ routerAuth.post('/signup', async(req, res) =>{
         }
         const sponsor = await sponsorDao.register(req.body)
         res.status(201).json(sponsor)
-        console.log(`console sponsor ${sponsor}`)
+       
     } catch (error) {
         res.status(500).json({message:'Erro ao registrar novo Patrocinador'})
     }
 })
 routerAuth.post('/login', async(req, res) =>{
     try {
-        const { name, phone, email, age, imageUrl, password} = req.body
+        const { email, password} = req.body
         const sponsor = await sponsorDao.findSponsor(email)
         
         if(!sponsor){

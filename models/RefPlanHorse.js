@@ -6,7 +6,9 @@ const Padrinho = require('../models/Sponsor');
 
 const refPlanHorseSchema = new Schema(
     {
-        
+        name: {
+              type: String
+        },
         horse_id: {
             type: Schema.Types.ObjectId, ref: 'Horse'
           },

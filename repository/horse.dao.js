@@ -1,5 +1,4 @@
 const Horse = require('../models/Horse');
-const bcrypt = require('bcryptjs');
 
 class HorseRepository{
 
@@ -52,14 +51,29 @@ class HorseRepository{
             throw new Error();
         } 
     }
+
+    findHorse = async ()=>{
+        try {
+            const horseArr = await this.horse.find()
+            return(horseArr)
+        } catch (error) {
+            throw new Error();
+        } 
+           
+    }
+
+
     insertImg = async (id, urlImg) =>{
         try {
             const horseWithImg = await this.horse.findByIdAndUpdate(id, {$push: {midiasImg: urlImg }}, {new : true})
             return (horseWithImg)
+
         } catch (error) {
             throw new Error();
         }
     }
+
+
     insertVideo = async (id, urlVideo) =>{
         try {
             const horseWithVideo = await this.horse.findByIdAndUpdate(id, {$push: {midiasVideo: urlVideo }}, {new : true})
@@ -69,5 +83,6 @@ class HorseRepository{
             
         }
     }
+
 }
 module.exports = new HorseRepository(Horse)

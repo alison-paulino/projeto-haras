@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const RefPlanHorse = require('../models/RefPlanHorse');
 
 const HorseSchema = new Schema(
     {
@@ -36,14 +37,19 @@ const HorseSchema = new Schema(
         midiasImg: [{
             type : String
         }],
+
         midiasVideo: [{
+
             type : String
         }],
         register: {
             type: String,
             required: [true, 'Registro é obrigatório.'],
             unique: true,
-        },        
+        }, 
+        refPlanHorse_id: [{
+            type: Schema.Types.ObjectId, ref: 'RefPlanHorse'
+          }]
         
     },
     {
