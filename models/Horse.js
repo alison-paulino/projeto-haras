@@ -37,7 +37,9 @@ const HorseSchema = new Schema(
         midiasImg: [{
             type : String
         }],
-        midiasVideo:[ {
+
+        midiasVideo: [{
+
             type : String
         }],
         register: {

@@ -51,6 +51,16 @@ class PlansRepository {
             
         }
      }
+
+     sendMessage = async ( id, payload ) => {
+         try {
+             const { message } = payload;
+             const recordedMessage = await this.plan.findByIdAndUpdate(id, {$push: {message: message}}, {new: true});
+             return recordedMessage
+         } catch (error) {
+             throw new Error(error);
+         }
+     }
 }
 
 module.exports = new PlansRepository(plan)
