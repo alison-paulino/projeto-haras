@@ -3,8 +3,18 @@ const administratorDao = require('../repository/administrator.dao')
 const sponsorDao = require('../repository/sponsor.dao')
 const jwt = require('jsonwebtoken');
 const { Router } = require('express');
+const fileUploader = require('../config/cloudinary.config');
 
 const routerAuth = Router();
+
+routerAuth.post('/upload',fileUploader.single('image') ,async (req, res)=>{
+    try {
+       const fileUploaded = req.file.path
+        return res.status(200).json(fileUploaded)
+    } catch (error) {
+        res.status(500).json({message:'Erro ao registrar novo administrador'})
+    }
+})
 
 routerAuth.post('/signupAdm', async(req, res) =>{
     try {
