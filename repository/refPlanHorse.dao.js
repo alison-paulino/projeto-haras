@@ -2,6 +2,7 @@ const RefPlanHorse = require('../models/RefPlanHorse');
 const Sponsor = require('../models/Sponsor');
 const Horse = require('../models/Horse');
 const Plans = require('../models/Plans');
+const Message = require('../models/Message');
 
 class RefPlanHorseRepositoty {
     constructor(refPlanHorseModel){
