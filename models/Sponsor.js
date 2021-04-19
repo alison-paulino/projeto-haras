@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const RefPlanHorse = require('../models/RefPlanHorse');
+const Message = require('../models/Message')
 
 const sponsorSchema = new Schema(
     {
@@ -31,15 +32,16 @@ const sponsorSchema = new Schema(
         imageUrl: {
             type: String,
         },
-        message: {
-            type: [String]
-        },
+        
         dayUseMonth: {
             type: Number,
         },
         refPlanHorse_id: [
            {type: Schema.Types.ObjectId, ref: 'RefPlanHorse'}
-            ] 
+            ],
+        message_id:[{
+            type: Schema.Types.ObjectId, ref: 'Message'
+        }]
     },
     {
         timestamps: true

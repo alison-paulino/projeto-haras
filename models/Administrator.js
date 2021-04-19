@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const Haras = require('../models/Haras');
+const Message = require('../models/Message')
 
 
 const administratorSchema = new Schema(
@@ -35,7 +36,10 @@ const administratorSchema = new Schema(
         },
         haras_id: {
             type: Schema.Types.ObjectId, ref: 'Haras'
-          }
+          },
+        message_id:[{
+            type: Schema.Types.ObjectId, ref: 'Message'
+        }]
     },
     {
         timestamps: true

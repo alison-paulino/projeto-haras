@@ -127,6 +127,7 @@ routerAuth.post('/login', async(req, res) =>{
         
         res.status(500).json();
     }
+    })
     routerAuth.get('/sponsor/:id', async(req, res)=>{
         try {
             const {id} = req.params
@@ -148,6 +149,6 @@ routerAuth.post('/login', async(req, res) =>{
     } catch (error) {
         res.status(500).json({message:'Patrocinador não encontrado'})
     }
-})
+
 })
 module.exports = routerAuth;

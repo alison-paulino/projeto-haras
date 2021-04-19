@@ -38,6 +38,9 @@ app.use('/horse', routerHorse);
 // Rotas Privadas (Precisam de jwt)
 const harasRouter = require('./routes/haras.routes')
 const plansRouter = require('./routes/plans.routes')
+const routerMessage = require('./routes/message.routes')
+
+app.use('/message',routerMessage);
 app.use( '/haras', harasRouter )
 
 // exportar app
