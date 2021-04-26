@@ -48,6 +48,10 @@ routerAuth.post('/loginAdm', async(req, res) =>{
         const payload = {
             email: administrador.email,
             id: administrador._id
+            name: administrator.name,
+            phone : administrator.phone,
+            age: administrator.age,
+            imageUrl: administrator.imageUrl
         };
         
         const token = jwt.sign(
@@ -114,7 +118,11 @@ routerAuth.post('/login', async(req, res) =>{
         }
         const payload = {
             email: sponsor.email,
-            id: sponsor._id
+            id: sponsor._id,
+            name: sponsor.name,
+            phone : sponsor.phone,
+            age: sponsor.age,
+            imageUrl: sponsor.imageUrl,
         };
         
         const token = jwt.sign(

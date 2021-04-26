@@ -8,16 +8,18 @@ class PlansRepository {
     createPlan = async (plan) => {
         
         try {
-            const { name, price, message, duration, dayUseMonth } = plan
+            const { name, price, foto, video, dayUse } = plan
             const findPlan = await this.plan.findOne({name})
             if(findPlan){
                 throw new Error();
             } else {
-                const newPlan = await this.plan.create({ name, price, message, duration, dayUseMonth })
+                const newPlan = await this.plan.create({ name, price, foto, video, dayUse })
                 return ({
                     name: newPlan.name,
                     price: newPlan.price,
-                    duration: newPlan.duration,
+                    foto: newPlan.foto,
+                    video: newPlan.video,
+                    dayUse: newPlan.dayUse
                     plan_id: newPlan._id
                 })    
             }
@@ -39,12 +41,14 @@ class PlansRepository {
 
     editPlan = async (id, plan) => {
         try {
-            const { name, price, duration } = plan;
-            const editedPlan = await this.plan.findByIdAndUpdate (id, { name, price, duration }, {new : true});
+            const { name, price, foto, video, dayUse } = plan;
+            const editedPlan = await this.plan.findByIdAndUpdate (id, { name, price, foto, video, dayUse }, {new : true});
             return ({
                 name: editedPlan.name,
                 price: editedPlan.price,
-                duration: editedPlan.duration,
+                foto: editedPlan.foto,
+                video: editedPlan.video,
+                dayUse: editedPlan.dayUse
                 })
         } catch (error) {
             throw new Error(error);
