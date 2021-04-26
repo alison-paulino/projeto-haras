@@ -31,32 +31,7 @@ class MessageRepository {
             console.log(error)
             throw new Error(error);
         }
-        // try {
-            
-        //      const { message, sponsor_id, administrator_id } = payload;
-        //      const sponsorDB = await sponsor.findById(sponsor_id) 
-        //      const findMessage = await this.message.findOne({$and:[{sponsor_id}, {administrator_id}])
-        //      console.log(findMessage)
-             
-        //         if(findMessage) {
-        //            const newMessage = await this.message.findByIdAndUpdate(findMessage._id,{$push:{message}},{new : true})
-        //             return newMessage;    
-        //         }
-        //         else{
-        //            const recordedMessage = await this.message.create({ message,sponsor_id, administrator_id});
-        //            const recordeMessageIdSponsor= await sponsor.findByIdAndUpdate(sponsor_id,{$push:{message_id:recordedMessage._id}}).populate("message_id")
-        //            //const recordeMessageIdAdm= await administrator.findByIdAndUpdate(administrator_id,{$push:{message_id:recordedMessage._id}})
-        //            console.log(recordeMessageIdSponsor);
-        //            return recordedMessage
-        //       }   
-               
-             
-            
-        //     // const findMessage = await this.message.findById(sponsorDB.message_id) 
-        //      //if(findMessage){
-        // } catch (error) {
-        //     throw new Error(error);
-        // }
+        
     }
     getIdAdm = async (id)=>{
         try{

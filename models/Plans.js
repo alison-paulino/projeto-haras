@@ -6,19 +6,24 @@ const plansSchema = new Schema(
         name: {
             type: String,
             time: true,
+            unique: true,
             required: [true, 'Nome é obrigatório.'],
         },
         price: {
             type: String,
             required: [true, 'Valor do plano é obrigatório'],
         },
-        duration: {
-            type: String,
-            required: [ true, 'Duração do plano é obrigatório.']
-        },
-        dayUseMonth: {
+        foto: {
             type: Number,
-
+            required: [ true, 'Quantidade de fotos é obrigatório.']
+        },
+        dayUse: {
+            type: Number,
+             required: [ true, 'Quantidade de day use é obrigatório.']
+        },
+        video: {
+            type: Number,
+             required: [ true, 'Quantidade de videos é obrigatório.']
         },
     },
     {
