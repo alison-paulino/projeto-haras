@@ -5,9 +5,9 @@ const plansRouter = Router();
 
 plansRouter.post('/create', async ( req, res ) => {
     try {
-        const { name, price, foto, video, dayUse } = req.body;
+        const { name, price, foto, video, dayUse, description} = req.body;
             
-        if( !name && !price && !foto && !video && !dayUse ){
+        if( !name && !price && !foto && !video && !dayUse && !description){
             return res.status(400).json({ message: 'Todos os campos são obrigatórios'})
         }
         const plan = await plansDao.createPlan(req.body)
@@ -17,10 +17,10 @@ plansRouter.post('/create', async ( req, res ) => {
     }
 })
 
-plansRouter.get('/update/:id', async (req, res) => {
+plansRouter.get('/list', async (req, res) => {
     try {
         const { id } = req.params;
-        const plan = await plansDao.getPlan(id);
+        const plan = await plansDao.getPlan();
         res.status(200).json(plan)
 
     } catch (error) {
@@ -31,8 +31,8 @@ plansRouter.get('/update/:id', async (req, res) => {
 plansRouter.put('/update/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        const { name, price, foto, video, dayUse } = req.body;
-        if( !name && !price && !foto && !video && !dayUse ){
+        const { name, price, foto, video, dayUse, description } = req.body;
+        if( !name && !price && !foto && !video && !dayUse && !description){
             return res.status(400).json({ message: 'Todos os campos são obrigatórios'})
         } 
         const editedPlan = await plansDao.editPlan(id, req.body)
