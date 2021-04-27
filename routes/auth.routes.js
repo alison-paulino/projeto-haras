@@ -47,7 +47,7 @@ routerAuth.post('/loginAdm', async(req, res) =>{
         }
         const payload = {
             email: administrador.email,
-            id: administrador._id
+            id: administrador._id,
             name: administrator.name,
             phone : administrator.phone,
             age: administrator.age,
