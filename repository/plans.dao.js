@@ -8,19 +8,20 @@ class PlansRepository {
     createPlan = async (plan) => {
         
         try {
-            const { name, price, foto, video, dayUse } = plan
+            const { name, price, foto, video, dayUse, description } = plan
             const findPlan = await this.plan.findOne({name})
             if(findPlan){
                 throw new Error();
             } else {
-                const newPlan = await this.plan.create({ name, price, foto, video, dayUse })
+                const newPlan = await this.plan.create({ name, price, foto, video, dayUse, description })
                 return ({
                     name: newPlan.name,
                     price: newPlan.price,
                     foto: newPlan.foto,
                     video: newPlan.video,
                     dayUse: newPlan.dayUse,
-                    plan_id: newPlan._id
+                    plan_id: newPlan._id,
+                    description: newPlan.description
                 })    
             }
        
@@ -32,7 +33,7 @@ class PlansRepository {
 
     getPlan = async (id) => {
         try {
-            const planBD = await this.plan.findById(id)
+            const planBD = await this.plan.find()
             return planBD
         } catch (error) {
             throw new Error(error);            
@@ -41,14 +42,15 @@ class PlansRepository {
 
     editPlan = async (id, plan) => {
         try {
-            const { name, price, foto, video, dayUse } = plan;
-            const editedPlan = await this.plan.findByIdAndUpdate (id, { name, price, foto, video, dayUse }, {new : true});
+            const { name, price, foto, video, dayUse, description } = plan;
+            const editedPlan = await this.plan.findByIdAndUpdate (id, { name, price, foto, video, dayUse, description }, {new : true});
             return ({
                 name: editedPlan.name,
                 price: editedPlan.price,
                 foto: editedPlan.foto,
                 video: editedPlan.video,
-                dayUse: editedPlan.dayUse
+                dayUse: editedPlan.dayUse,
+                description: editedPlan.description
                 })
         } catch (error) {
             throw new Error(error);

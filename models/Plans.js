@@ -9,6 +9,10 @@ const plansSchema = new Schema(
             unique: true,
             required: [true, 'Nome é obrigatório.'],
         },
+        description: {
+            type: String,
+            required: [true, 'Descrição do plano é obrigatório'],
+        },
         price: {
             type: String,
             required: [true, 'Valor do plano é obrigatório'],
