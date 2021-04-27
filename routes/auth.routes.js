@@ -17,6 +17,7 @@ routerAuth.post('/upload',fileUploader.single('image') ,async (req, res)=>{
 })
 
 routerAuth.post('/signupAdm', async(req, res) =>{
+
     try {
         const { name, phone, email, age, imageUrl, password } = req.body
 
@@ -48,10 +49,10 @@ routerAuth.post('/loginAdm', async(req, res) =>{
         const payload = {
             email: administrador.email,
             id: administrador._id,
-            name: administrator.name,
-            phone : administrator.phone,
-            age: administrator.age,
-            imageUrl: administrator.imageUrl
+            name: administrador.name,
+            phone : administrador.phone,
+            age: administrador.age,
+            imageUrl: administrador.imageUrl
         };
         
         const token = jwt.sign(
