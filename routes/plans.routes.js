@@ -7,7 +7,7 @@ plansRouter.post('/create', async ( req, res ) => {
     try {
         const { name, price, foto, video, dayUse } = req.body;
             
-        if( !name && !price && !foto, && !video, && !dayUse ){
+        if( !name && !price && !foto && !video && !dayUse ){
             return res.status(400).json({ message: 'Todos os campos são obrigatórios'})
         }
         const plan = await plansDao.createPlan(req.body)
@@ -32,7 +32,7 @@ plansRouter.put('/update/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const { name, price, foto, video, dayUse } = req.body;
-        if( !name && !price && !foto, && !video, && !dayUse ){
+        if( !name && !price && !foto && !video && !dayUse ){
             return res.status(400).json({ message: 'Todos os campos são obrigatórios'})
         } 
         const editedPlan = await plansDao.editPlan(id, req.body)

@@ -19,7 +19,7 @@ class PlansRepository {
                     price: newPlan.price,
                     foto: newPlan.foto,
                     video: newPlan.video,
-                    dayUse: newPlan.dayUse
+                    dayUse: newPlan.dayUse,
                     plan_id: newPlan._id
                 })    
             }
