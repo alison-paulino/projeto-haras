@@ -17,6 +17,7 @@ routerAuth.post('/upload',fileUploader.single('image') ,async (req, res)=>{
 })
 
 routerAuth.post('/signupAdm', async(req, res) =>{
+
     try {
         const { name, phone, email, age, imageUrl, password } = req.body
 
