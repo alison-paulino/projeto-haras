@@ -17,10 +17,10 @@ plansRouter.post('/create', async ( req, res ) => {
     }
 })
 
-plansRouter.get('/update/:id', async (req, res) => {
+plansRouter.get('/list', async (req, res) => {
     try {
         const { id } = req.params;
-        const plan = await plansDao.getPlan(id);
+        const plan = await plansDao.getPlan();
         res.status(200).json(plan)
 
     } catch (error) {

@@ -30,9 +30,9 @@ class PlansRepository {
     
     }
 
-    getPlan = async (id) => {
+    getPlan = async () => {
         try {
-            const planBD = await this.plan.findById(id)
+            const planBD = await this.plan.find()
             return planBD
         } catch (error) {
             throw new Error(error);            
