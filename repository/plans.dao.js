@@ -5,10 +5,10 @@ class PlansRepository {
         this.plan = PlansModel;
     }
 
-    createPlan = async (plan) => {
+    createPlan = async (plano) => {
         
         try {
-            const { name, price, foto, video, dayUse, description } = plan
+            const { name, price, foto, video, dayUse, description } = plano
             const findPlan = await this.plan.findOne({name})
             if(findPlan){
                 throw new Error();
@@ -31,7 +31,7 @@ class PlansRepository {
     
     }
 
-    getPlan = async (id) => {
+    getPlan = async () => {
         try {
             const planBD = await this.plan.find()
             return planBD
@@ -40,9 +40,9 @@ class PlansRepository {
         }
     }
 
-    editPlan = async (id, plan) => {
+    editPlan = async (id, plano) => {
         try {
-            const { name, price, foto, video, dayUse, description } = plan;
+            const { name, price, foto, video, dayUse, description } = plano;
             const editedPlan = await this.plan.findByIdAndUpdate (id, { name, price, foto, video, dayUse, description }, {new : true});
             return ({
                 name: editedPlan.name,
