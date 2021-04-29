@@ -150,6 +150,7 @@ routerAuth.post('/login', async(req, res) =>{
         try {
             
             const sponsorDB = await sponsorDao.findSponsor()
+            
             return res.status(200).json(sponsorDB)
         } catch (error) {
             res.status(401).json({message:'Usuário não encontrado'})
