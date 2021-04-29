@@ -8,9 +8,9 @@ const conversationSchema = new Schema(
         message_id:[{
            type: Schema.Types.ObjectId, ref: "Message"
         }],
-         sponsor_id: {
+         sponsor_id:[ {
             type: Schema.Types.ObjectId, ref: 'Sponsor'
-          }
+          }]
     },
           {
               timestamps: true
