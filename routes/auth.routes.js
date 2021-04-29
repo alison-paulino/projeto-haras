@@ -149,7 +149,7 @@ routerAuth.post('/login', async(req, res) =>{
     routerAuth.get('/listsponsor', async(req, res)=>{
         try {
             
-            const sponsorDB = await sponsorDao.findSponsor()
+            const sponsorDB = await sponsorDao.listSponsor()
             
             return res.status(200).json(sponsorDB)
         } catch (error) {

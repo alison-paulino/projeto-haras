@@ -48,7 +48,7 @@ class SponsorRepository{
             throw new Error();
         }
     }
-    findSponsor = async ()=>{
+    listSponsor = async ()=>{
         try {
             const sponsor = await this.sponsor.find()
             return sponsor
