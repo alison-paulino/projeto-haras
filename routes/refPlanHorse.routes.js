@@ -26,7 +26,7 @@ routerRef.get('/infoprofile/:id', async (req, res)=>{
     try {
         const { id } = req.params;
         const infos = await RefPlanHorseDao.getProfile(id)
-        res.status(200).json({infos})
+        res.status(200).json(infos)
     } catch (error) {
         res.status(500).json({message: 'Erro ao carregar as informações'})
     }
