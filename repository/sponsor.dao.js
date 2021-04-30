@@ -48,6 +48,14 @@ class SponsorRepository{
             throw new Error();
         }
     }
+    listSponsor = async ()=>{
+        try {
+            const sponsor = await this.sponsor.find()
+            return sponsor
+        } catch (error) {
+            throw new Error();
+        }
+    }
     updateSponsor = async (sponsor, id)=>{
         try {
             const { name, phone, age, email, password, imageUrl, message } = sponsor;
