@@ -25,20 +25,20 @@ class HarasRepository {
     }
 
 
-    getHaras = async (id) => {
+    getHaras = async (id)=>{
+        
         try {
-            const harasBD = await this.haras.findById(id);
-            return harasBD;
+            const harasDB = await this.haras.findById(id)
+            return(harasDB)
         } catch (error) {
-            throw new Error();            
-        }
+            throw new Error();
+        } 
     }
 
 
 
     editHaras = async ( id, haras ) => {
         try {
-            console.log(haras)
             const { name, phone, email, localization } = haras
             const editedHaras = await this.haras.findByIdAndUpdate(id, {name, phone, email, localization}, {new : true})
             return ({

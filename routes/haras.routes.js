@@ -20,14 +20,14 @@ harasRouter.post('/create', async (req, res) => {
     }
 })
 
-harasRouter.get('/update/:id', async (req, res) => {
+harasRouter.get('/findharas/:id', async (req, res) => {
     try {
         const { id } = req.params
         const haras = await harasDao.getHaras(id)
         res.status(200).json(haras)
 
     } catch (error) {
-        throw new Error(error)        
+        res.status(500).json({message: 'Erro ao busca haras'})        
     }
 
 })
@@ -37,6 +37,7 @@ harasRouter.put('/update/:id', async (req, res) => {
     try {
         const { id } = req.params
         const { name, phone, email, localization } = req.body
+        console.log(id)
         if (!name && !phone && !email && !localization){
             return res.status(400).json({message: 'Todos os campos são obrigatórios'})
         }
