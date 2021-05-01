@@ -93,7 +93,7 @@ routerHorse.get('/infohorse/:id', async (req, res)=>{
     }
 })
 
-routerHorse.post('/sendVideo/:id', fileUploader.single('video'), async (req, res) =>{
+routerHorse.post('/sendVideo/:id', fileUploader.single('imagem'), async (req, res) =>{
     try {
         const { id } = req.params;
         const updatedHorse = await horseDao.insertVideo(id, req.file.path)
