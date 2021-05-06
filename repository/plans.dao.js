@@ -58,6 +58,15 @@ class PlansRepository {
         }
      }
 
+     deletePlan = async (id) => {
+         try {
+             const planFromDB = await this.plan.findByIdAndRemove(id)
+             return (planFromDB)
+         } catch (error) {
+            throw new Error(error);
+         }
+     }
+
      
 }
 

@@ -68,10 +68,9 @@ routerAuth.post('/loginAdm', async(req, res) =>{
     }
 })  
 
-routerAuth.get('/adm/:id', async (req, res) =>{
+routerAuth.get('/adm', async (req, res) =>{
     try {
-        const {id} = req.params
-        const administrator = await administratorDao.findAdministratorById(id);
+        const administrator = await administratorDao.getAdministrator();
         res.status(200).json(administrator)
     } catch (error) {
         throw new Error();
@@ -170,4 +169,16 @@ routerAuth.post('/login', async(req, res) =>{
     }
 
 })
+
+    routerAuth.post('/delete/:id', async (req, res) => {
+        try {
+            const {id} = req.params
+            const adminDeleteDB = await administratorDao.deleteAdmin(id)
+            return res.status(200).json(adminDeleteDB)
+        } catch (error) {
+            res.status(500).json({message:'Administrador não encontrado'})
+        }
+    })
+
+
 module.exports = routerAuth;
