@@ -62,6 +62,15 @@ class HorseRepository{
            
     }
 
+    deleteHorse = async (id)=>{
+        try {
+            const horseFromDB = await this.horse.findByIdAndRemove(id);
+            return(horseFromDB)
+        } catch (error) {
+            throw new Error();
+        }
+    }
+
 
     insertImg = async (id, urlImg) =>{
         try {

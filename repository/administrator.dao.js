@@ -65,15 +65,26 @@ class AdminitratorRepository{
         }
     }
 
-    findAdministratorById = async (id)=>{
+    getAdministrator = async () => {
         try {
-           const administratorBD = await this.administrator.findById(id)
+           const administratorBD = await this.administrator.find()
         return administratorBD;
         } catch (error) {
             
             throw new Error();
         }
         
+    }
+
+    deleteAdmin = async (id) => {
+        try {
+            const administratorBD = await this.administrator.findByIdAndRemove(id)
+            console.log(administratorBD)
+            return administratorBD
+
+        } catch (error) {
+            throw new Error();
+        }
     }
 } 
 module.exports = new AdminitratorRepository(Administrator);

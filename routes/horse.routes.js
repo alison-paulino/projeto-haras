@@ -75,6 +75,18 @@ routerHorse.get('/listhorse', async (req, res)=>{
         res.status(500).json({message:'Erro ao buscar cavalos'})
     }
 })
+
+routerHorse.post('/delete/:id', async (req, res) =>{
+    try {
+        const { id } = req.params;
+        const horseToDelete = await horseDao.deleteHorse(id)
+        return res.status(200).json(horseToDelete)
+    } catch (error) {
+        res.status(500).json({message:'Erro ao deletar cavalo'})
+    }
+
+})
+
 routerHorse.get('/infohorse/:id', async (req, res)=>{
     try {
         const { id } = req.params

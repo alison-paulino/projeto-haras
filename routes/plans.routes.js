@@ -43,6 +43,17 @@ plansRouter.put('/update/:id', async (req, res) => {
     }
 })
 
+plansRouter.post(`/delete/:id`, async (req, res ) =>{
+    try {
+        const { id } = req.params;
+        const planToDelete = await plansDao.deletePlan(id)
+        return res.status(200).json(planToDelete)
+    } catch (error) {
+        res.status(500).json({ message: 'Erro ao deletar plano' })
+        
+    }
+})
+
 
 
 
